@@ -1,0 +1,12 @@
+usage
+
+
+python create_dataset_wav.py "./senthil_english_25minute.wav" "Custom" "Splitting" "senthil_v2"
+
+
+installation
+
+pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
+
+conda install --yes --file requirements.txt
+pip install -r requirements.txt
