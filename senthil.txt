@@ -10,3 +10,15 @@ pip3 install torch torchvision torchaudio --index-url https://download.pytorch.o
 
 conda install --yes --file requirements.txt
 pip install -r requirements.txt
+
+
+command to convert cli to gui using gpt4o
+
+"convert this cli application as gradio gui application which will ask all the arguments in form, files would be uploaded and finished zip file link will be provided for download"
+
+
+
+todo 
+~~~~~~
+setup defaults for gradio
+dataset= custom and mode= splitter
