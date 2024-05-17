@@ -26,9 +26,9 @@ AUDIO_NAME = sys.argv[4]
 
 folders = [
     f"youtubeaudio/{AUDIO_NAME}",
-    f"drive/MyDrive/audio/{AUDIO_NAME}",
+    #f"drive/MyDrive/audio/{AUDIO_NAME}",
     f"dataset/{AUDIO_NAME}",
-    f"drive/MyDrive/dataset/{AUDIO_NAME}"
+    #f"drive/MyDrive/dataset/{AUDIO_NAME}"
 ]
 
 for folder in folders:
@@ -58,11 +58,11 @@ for file in os.listdir(f"separated/htdemucs/{AUDIO_NAME}"):
         shutil.copy(
             f"separated/htdemucs/{AUDIO_NAME}/{file}", f"dataset/{AUDIO_NAME}"
         )
-
+"""
 # Copy files if dataset is "Youtube"
 if dataset == "Youtube":
     shutil.copy(f"youtubeaudio/{AUDIO_NAME}.wav", f"drive/MyDrive/audio/{AUDIO_NAME}")
-
+"""
 
 # Split The Audio into Smaller Duration Before Training
 if Mode == "Separate":
@@ -275,6 +275,7 @@ elif Mode == "Splitting":
             f"dataset/{AUDIO_NAME}/split_{i}.wav", chunk, sr
         )  # Save sliced audio files with soundfile.
 
+"""
 if Mode == "Separate":
     print("Mode is set to Separate. Skipping this section")
 elif Mode == "Splitting":
@@ -286,7 +287,9 @@ elif Mode == "Splitting":
         shutil.copy(
             f"dataset/{AUDIO_NAME}/{file}", f"drive/MyDrive/dataset/{AUDIO_NAME}"
         )
-
+"""
+# delete the vocals.wav file from the dataset folder
+os.remove(f"dataset/{AUDIO_NAME}/vocals.wav")
 # create a zip file with the dataset folder as AUDIO_NAME.zip in the current directory
 shutil.make_archive(f"{AUDIO_NAME}", "zip","." ,"dataset")
 
@@ -294,7 +297,7 @@ shutil.make_archive(f"{AUDIO_NAME}", "zip","." ,"dataset")
 shutil.rmtree(f"youtubeaudio/", ignore_errors=True)
 shutil.rmtree(f"separated/htdemucs/", ignore_errors=True)
 shutil.rmtree(f"dataset/{AUDIO_NAME}", ignore_errors=True)
-shutil.rmtree(f"drive/MyDrive/", ignore_errors=True)
+#shutil.rmtree(f"drive/MyDrive/", ignore_errors=True)
 
 
 #  cleanup completed

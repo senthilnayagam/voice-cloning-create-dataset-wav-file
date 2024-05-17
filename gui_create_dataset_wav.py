@@ -22,9 +22,9 @@ def create_dataset_wav(input_wav, dataset, mode, audio_name):
 
     folders = [
         f"youtubeaudio/{AUDIO_NAME}",
-        f"drive/MyDrive/audio/{AUDIO_NAME}",
+        #f"drive/MyDrive/audio/{AUDIO_NAME}",
         f"dataset/{AUDIO_NAME}",
-        f"drive/MyDrive/dataset/{AUDIO_NAME}"
+        #f"drive/MyDrive/dataset/{AUDIO_NAME}"
     ]
 
     for folder in folders:
@@ -52,9 +52,11 @@ def create_dataset_wav(input_wav, dataset, mode, audio_name):
                 f"separated/htdemucs/{AUDIO_NAME}/{file}", f"dataset/{AUDIO_NAME}"
             )
 
+    """
     # Copy files if dataset is "Youtube"
     if dataset == "Youtube":
         shutil.copy(f"youtubeaudio/{AUDIO_NAME}.wav", f"drive/MyDrive/audio/{AUDIO_NAME}")
+    """
 
     # Split The Audio into Smaller Duration Before Training
     if Mode == "Separate":
@@ -261,6 +263,8 @@ def create_dataset_wav(input_wav, dataset, mode, audio_name):
                 f"dataset/{AUDIO_NAME}/split_{i}.wav", chunk, sr
             )  # Save sliced audio files with soundfile.
 
+    # delete the vocals.wav file from the dataset folder
+    os.remove(f"dataset/{AUDIO_NAME}/vocals.wav")
     # Create a zip file with the dataset folder as AUDIO_NAME.zip in the current directory
     shutil.make_archive(f"{AUDIO_NAME}", "zip",".", "dataset")
 

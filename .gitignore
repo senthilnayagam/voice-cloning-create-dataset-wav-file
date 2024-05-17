@@ -2,6 +2,7 @@
 youtubeaudio
 separated
 dataset
+tmp
 *.zip
 *.wav
 
